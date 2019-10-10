@@ -3,8 +3,8 @@ import React from 'react';
 
 const Question = ({question}) => {
   return (
-    <div class="question-box--wrapper">
-      <div class="question-box">
+    <div className="question-box--wrapper">
+      <div className="question-box">
         <p>{question}</p>
       </div>
     </div>

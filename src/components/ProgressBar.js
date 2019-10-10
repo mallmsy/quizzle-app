@@ -1,18 +1,20 @@
 import React from 'react';
 
-const ProgressBar = ({}) => {
+const ProgressBar = ({currentQuestion}) => {
+  let percentage = currentQuestion / 3 * 100;
   return (
     <div>
-      <div class="progress-bar__wrapper">
-          <div class="progress-bar">
-            <div class="progress-bar--overlay">
-
+      <div className="progress-bar__wrapper">
+          <div className="progress-bar">
+            <div
+            className="progress-bar--overlay"
+            style={{width: `${percentage}%`}}>
             </div>
           </div>
         </div>
 
-        <h2 class="question-number">
-  		    Question 1 of 5
+        <h2 className="question-number">
+  		    Question {currentQuestion} of 3
   	   </h2>
       </div>
   );

@@ -1,10 +1,10 @@
 import React from 'react';
 
 
-const Skip = ({}) => {
+const Skip = ({skip}) => {
   return (
-    <div class="skip-button-wrapper">
-		  <div class="skip-button">
+    <div className="skip-button-wrapper">
+		  <div className="skip-button" onClick={() => skip()}>
 			   <p>Skip</p>
 		   </div>
 	  </div>

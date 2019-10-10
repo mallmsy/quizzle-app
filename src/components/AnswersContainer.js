@@ -4,10 +4,10 @@ import Answer from './Answer';
 
 const AnswersContainer = ({answers, correctAnswer}) => {
   return (
-    <div class="answers-box-wrapper">
-		  <div class="answers-box">
+    <div className="answers-box-wrapper">
+		  <div className="answers-box">
       {answers.map((answer, ind) =>
-        <Answer answer={answer} index={ind}/>
+        <Answer answer={answer} index={ind} key={ind}/>
       )}
       </div>
     </div>
