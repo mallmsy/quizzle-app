@@ -1,8 +1,9 @@
 import React from 'react';
 
-const ProgressBar = ({currentQuestion}) => {
-  let percentage = currentQuestion / 3 * 100;
+const ProgressBar = ({currentQuestion, numQuestions}) => {
+  let percentage = currentQuestion.id / numQuestions * 100;
   return (
+
     <div>
       <div className="progress-bar__wrapper">
           <div className="progress-bar">
@@ -12,10 +13,12 @@ const ProgressBar = ({currentQuestion}) => {
             </div>
           </div>
         </div>
+        {currentQuestion ?
 
         <h2 className="question-number">
-  		    Question {currentQuestion} of 3
+  		    Question {currentQuestion.id} of {numQuestions}
   	   </h2>
+        : null}
       </div>
   );
 }

@@ -1,8 +1,10 @@
 import React from 'react';
+// import Fragment from 'react';
+
 import ProgressBar from './components/ProgressBar.js';
-import Question from './components/Question.js';
-import AnswersContainer from './components/AnswersContainer.js';
-import Skip from './components/Skip.js';
+import Next from './components/Next.js';
+import Finish from './components/Finish.js';
+import Active from './components/Active.js';
 import quiz from './quiz.js';
 
 import './App.css';
@@ -10,15 +12,25 @@ import './App.css';
 class App extends React.Component {
 
   state = {
-    quiz: quiz,
     currentQuestion: quiz[0],
-    isAnswered: false
+    numQuestions: quiz.length,
+    isAnswered: false,
+    numCorrect: 0,
+    completed: false
   }
 
-  skip = () => {
+  next = (e) => {
+    if (e.target.innerText === 'FINISH') {
+      this.setState({
+        completed: true,
+        currentQuestion: 0
+      })
+      return
+    }
+
     let index = this.state.currentQuestion.id
-    console.log("index", index)
-    if (index >= 3) {
+
+    if (index >= this.state.numQuestions) {
       this.setState({
         currentQuestion: quiz[0]
       })
@@ -29,18 +41,44 @@ class App extends React.Component {
     }
   }
 
+  collectAnswer = (index) => {
+    if (index === this.state.currentQuestion.correctAnswer) {
+      console.log("CORRECT!")
+      this.setState({
+        isAnswered: true,
+        numCorrect: this.state.numCorrect + 1
+      })
+    } else {
+      this.setState({
+        isAnswered: true
+      })
+    }
+  }
+
   render() {
     return (
-
       <div className="main">
-        <ProgressBar currentQuestion={this.state.currentQuestion.id}/>
+        <ProgressBar
+        currentQuestion={this.state.currentQuestion}
+        numQuestions={this.state.numQuestions}/>
 
-        <Question question={this.state.currentQuestion.question}/>
-
-        <AnswersContainer answers={this.state.currentQuestion.answers} correctAnswer={this.state.currentQuestion.correctAnswer}
-        />
-
-        <Skip skip={this.skip}/>
+        {this.state.completed
+          ?
+          <Finish/>
+          :
+          <Active
+          currentQuestion={this.state.currentQuestion}
+          numQuestions={this.state.numQuestions}
+          isAnswered={this.state.isAnswered}
+          completed={this.state.completed}
+          collectAnswer={this.collectAnswer}/>
+        }
+          <Next
+          next={this.next}
+          isAnswered={this.state.isAnswered}
+          numQuestions={this.state.numQuestions}
+          currentQuestion={this.state.currentQuestion}
+          completed={this.state.completed}/>
       </div>
     );
   }

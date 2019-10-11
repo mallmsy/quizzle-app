@@ -134,14 +134,14 @@ blue: rgb(11, 164, 224)
 	margin: 15px;
 }
 
-.skip-button-wrapper {
+.next-button-wrapper {
 	text-align: center;
 	text-transform: uppercase;
 	font-size: 1.6rem;
 	letter-spacing: 3px;
 }
 
-.skip-button {
+.next-button {
 	display: inline-block;
 	background-color: rgb(119, 0, 96);
 	height: 3rem;
@@ -150,7 +150,7 @@ blue: rgb(11, 164, 224)
 	margin-bottom: 2rem;
 }
 
-.skip-button p {
+.next-button p {
 	height: 1px;
   line-height: 1px;
 }
