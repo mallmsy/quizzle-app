@@ -2,17 +2,17 @@ import React from 'react';
 import Answer from './Answer';
 
 
-const AnswersContainer = ({answers, correctAnswer, collectAnswer, isAnswered}) => {
+const AnswersContainer = ({answers, correctAnswer, collectAnswer, selectedAnswer}) => {
   return (
     <div className="answers-box-wrapper">
 		  <div className="answers-box">
-      {answers.map((answer, ind) =>
+      {answers.map((answer, index) =>
         <Answer
         answer={answer}
-        index={ind}
+        index={index}
         collectAnswer={collectAnswer}
-        isAnswered={isAnswered}
-        key={ind}
+        selectedAnswer={selectedAnswer}
+        key={index}
         />
       )}
       </div>
