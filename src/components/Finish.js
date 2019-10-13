@@ -6,11 +6,22 @@ const Finish = ({numCorrect, numQuestions}) => {
   let kittens = ["zero", "one", "two", "three", "four"]
   let index;
 
-  if (numQuestions - numCorrect > 2) {
-    index = 1
+  const score = numCorrect / numQuestions * 100;
+  if (0 <= score && score <= 100) {
+      if (score <= 20) {
+          index = 0;
+      } else if (score <= 40) {
+          index = 1;
+      } else if (score <= 60) {
+          index = 2;
+      } else if (score <= 80) {
+          index = 3;
+      } else if (score <= 100) {
+        index = 4;
+      }
   } else {
-    index = 3
-  };
+      alert("YOU BLEW IT");
+  }
 
   return (
     <div>
