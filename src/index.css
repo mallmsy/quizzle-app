@@ -16,13 +16,27 @@ blue: rgb(11, 164, 224)
   box-sizing: inherit;
 }
 
-.main {
-  width: 100%;
-  height: 100vh;
-  margin-bottom: 3rem;
+body {
   background-color: rgb(167, 14, 137);
 	font-family: 'Asap', sans-serif;
 	color: #fff;
+}
+
+.main {
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+.welcome {
+  height: 55%;
+  width: 100%;
+  padding-top: 24rem;
+  background-color: rgb(167, 14, 137);
+  position: absolute;
+}
+
+#collapse {
+  visibility: hidden;
 }
 
 .progress-bar__wrapper {
@@ -91,6 +105,7 @@ blue: rgb(11, 164, 224)
 
   height: 8rem;
 	width: 8rem;
+  padding: 10px;
   border-radius: 1rem;
 	text-align: center;
   justify-self: center;
@@ -161,6 +176,16 @@ blue: rgb(11, 164, 224)
 	width: 15rem;
 	border-radius: 2.5rem;
 	margin-bottom: 3rem;
+}
+
+.next-button:hover {
+	transform: translateY(-3px);
+	box-shadow: 0 1rem 2rem rgba(0, 0 , 0,.2);
+}
+
+.next-button:active {
+	transform: translateY(-1px);
+	box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .4);
 }
 
 .next-button p {

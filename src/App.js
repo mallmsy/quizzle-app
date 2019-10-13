@@ -4,6 +4,7 @@ import React from 'react';
 import ProgressBar from './components/ProgressBar.js';
 import Next from './components/Next.js';
 import Finish from './components/Finish.js';
+import Welcome from './components/Welcome.js';
 import Active from './components/Active.js';
 import quiz from './quiz.js';
 
@@ -16,10 +17,28 @@ class App extends React.Component {
     numQuestions: quiz.length,
     selectedAnswer: null,
     numCorrect: 0,
-    completed: false
+    completed: false,
+    started: false
+  }
+
+  begin = () => {
+    this.setState({
+      started: true
+    })
+  }
+
+  submitAnswer = () => {
+    if (this.state.selectedAnswer === this.state.currentQuestion.correctAnswer) {
+      this.setState({
+        numCorrect: this.state.numCorrect + 1
+      })
+    }
   }
 
   next = (e) => {
+
+    this.submitAnswer();
+
     if (e.target.innerText === 'FINISH') {
       this.setState({
         completed: true,
@@ -45,21 +64,15 @@ class App extends React.Component {
   }
 
   collectAnswer = (index) => {
-    if (index === this.state.currentQuestion.correctAnswer) {
-      this.setState({
-        numCorrect: this.state.numCorrect + 1,
-        selectedAnswer: index
-      })
-    } else {
       this.setState({
         selectedAnswer: index
       })
-    }
   }
 
   render() {
     return (
       <div className="main">
+        <Welcome begin={this.begin} started={this.state.started}/>
         <ProgressBar
         currentQuestion={this.state.currentQuestion}
         numQuestions={this.state.numQuestions}/>
