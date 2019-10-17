@@ -1,11 +1,11 @@
 import React from 'react';
 
-const ProgressBar = ({currentQuestion, numQuestions}) => {
+const ProgressBar = ({currentQuestion, numQuestions, started}) => {
   let percentage = currentQuestion.id / numQuestions * 100;
   return (
 
     <div>
-      <div className="progress-bar__wrapper">
+      <div className="progress-bar__wrapper" id={started ? "" : "collapse"}>
           <div className="progress-bar">
             <div
             className="progress-bar--overlay"

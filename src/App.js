@@ -73,9 +73,11 @@ class App extends React.Component {
     return (
       <div className="main">
         <Welcome begin={this.begin} started={this.state.started}/>
+
         <ProgressBar
         currentQuestion={this.state.currentQuestion}
-        numQuestions={this.state.numQuestions}/>
+        numQuestions={this.state.numQuestions}
+        started={this.state.started}/>
 
         {this.state.completed
           ?
@@ -88,13 +90,15 @@ class App extends React.Component {
           numQuestions={this.state.numQuestions}
           completed={this.state.completed}
           collectAnswer={this.collectAnswer}
-          selectedAnswer={this.state.selectedAnswer}/>
+          selectedAnswer={this.state.selectedAnswer}
+          started={this.state.started}/>
         }
           <Next
           next={this.next}
           numQuestions={this.state.numQuestions}
           currentQuestion={this.state.currentQuestion}
-          completed={this.state.completed}/>
+          completed={this.state.completed}
+          started={this.state.started}/>
       </div>
     );
   }

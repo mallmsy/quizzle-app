@@ -3,9 +3,9 @@ import Question from './Question.js';
 import AnswersContainer from './AnswersContainer.js';
 
 
-const Active = ({currentQuestion, numQuestions, completed, collectAnswer, selectedAnswer}) => {
+const Active = ({currentQuestion, numQuestions, completed, collectAnswer, selectedAnswer, started}) => {
   return (
-    <div>
+    <div id={started ? "" : "collapse"}>
       <Question question={currentQuestion.question}/>
 
       <AnswersContainer answers={currentQuestion.answers} correctAnswer={currentQuestion.correctAnswer}
