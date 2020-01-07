@@ -22,16 +22,11 @@ body {
 	color: #fff;
 }
 
-.main {
-  margin-top: 5%;
-  margin-bottom: 5%;
-}
-
 .welcome {
-  height: 100%;
   width: 100%;
   background-color: rgb(167, 14, 137);
   position: absolute;
+  margin-top: 5rem;
 }
 
 .welcome h1 {
@@ -42,6 +37,10 @@ body {
 #collapse {
   opacity: 0;
   visibility: hidden;
+}
+
+#open {
+  visibility: visible;
 }
 
 .progress-bar__wrapper {
@@ -69,7 +68,7 @@ body {
 	font-size: 2rem;
 	letter-spacing: 3.5px;
 	text-transform: uppercase;
-	margin: 0 0 1rem 0;
+	margin: 0 0 2rem 0;
 }
 
 .question-box--wrapper {
@@ -93,14 +92,14 @@ body {
 }
 
 .answers-box-wrapper {
-	text-align: center;
+  display: flex;
+  justify-content: center;
 }
 
 .answers-box {
   display: flex;
   flex-wrap: wrap;
-  width: 50%;
-  margin-left: 23rem;
+  width: 50vw;
   justify-content: space-evenly;
 	margin-bottom: 2rem;
 }
@@ -110,8 +109,8 @@ body {
 	font-size: 2rem;
 	display: table;
 
-  height: 9rem;
-	width: 14rem;
+  height: 8rem;
+	width: 16rem;
   padding: 10px;
   border-radius: 1rem;
 	text-align: center;

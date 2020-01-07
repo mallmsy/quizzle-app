@@ -5,7 +5,7 @@ import AnswersContainer from './AnswersContainer.js';
 
 const Active = ({currentQuestion, numQuestions, completed, collectAnswer, selectedAnswer, started}) => {
   return (
-    <div id={started ? "" : "collapse"}>
+    <div id={started ? "open" : "collapse"}>
       <Question question={currentQuestion.question}/>
 
       <AnswersContainer answers={currentQuestion.answers} correctAnswer={currentQuestion.correctAnswer}
