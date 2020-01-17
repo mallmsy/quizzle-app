@@ -8,17 +8,31 @@ import Welcome from './components/Welcome.js';
 import Active from './components/Active.js';
 import quiz from './quiz.js';
 
+import setObject from './helpers';
+
 import './App.css';
 
 class App extends React.Component {
-
+  
   state = {
-    currentQuestion: quiz[0],
-    numQuestions: quiz.length,
-    selectedAnswer: null,
+    allQuestions: [],
+    currentQuestion: '',
+    numQuestions: 0,
+    selectedAnswer: '',
     numCorrect: 0,
     completed: false,
     started: false
+  }
+  
+  componentDidMount = () => {
+    fetch('https://opentdb.com/api.php?amount=10&category=11&difficulty=easy&type=multiple')
+    .then(res => res.json())
+    .then(json => json.results.map(el => setObject(el)))
+    .then(allQuestions => this.setState({
+      allQuestions: allQuestions,
+      currentQuestion: allQuestions[0],
+      numQuestions: allQuestions.length
+      }))
   }
 
   begin = () => {
@@ -28,7 +42,7 @@ class App extends React.Component {
   }
 
   submitAnswer = () => {
-    if (this.state.selectedAnswer === this.state.currentQuestion.correctAnswer) {
+    if (this.state.selectedAnswer === this.state.currentQuestion.correct_answer) {
       this.setState({
         numCorrect: this.state.numCorrect + 1
       })
@@ -62,14 +76,14 @@ class App extends React.Component {
       })
     }
   }
-
-  collectAnswer = (index) => {
+  collectAnswer = (answer) => {
       this.setState({
-        selectedAnswer: index
+        selectedAnswer: answer
       })
   }
 
   render() {
+    console.log("STATE STATE STATE: ", this.state)
     return (
       <div className="main">
         <Welcome begin={this.begin} started={this.state.started}/>
@@ -77,7 +91,9 @@ class App extends React.Component {
         <ProgressBar
         currentQuestion={this.state.currentQuestion}
         numQuestions={this.state.numQuestions}
-        started={this.state.started}/>
+        started={this.state.started}
+        index={this.state.allQuestions.indexOf(this.state.currentQuestion)}
+        />
 
         {this.state.completed
           ?

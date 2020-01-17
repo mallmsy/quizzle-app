@@ -3,6 +3,7 @@ import Answer from './Answer';
 
 
 const AnswersContainer = ({answers, correctAnswer, collectAnswer, selectedAnswer}) => {
+  // debugger
   return (
     <div className="answers-box-wrapper">
 		  <div className="answers-box">

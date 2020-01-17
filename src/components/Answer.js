@@ -6,7 +6,7 @@ const Answer = ({answer, index, collectAnswer, selectedAnswer}) => {
   return (
       <div
       className={`answers-box__answer--${number}`}
-      onClick={() => collectAnswer(index)}
+      onClick={() => collectAnswer(answer)}
       id={selectedAnswer === index ? "clicked" : null}>
 					<p>{answer}</p>
 			</div>
